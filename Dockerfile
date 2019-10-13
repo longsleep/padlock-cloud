@@ -1,15 +1,10 @@
-FROM golang:alpine as padlock-cloud
+FROM golang:1.13-alpine as padlock-cloud
 
 WORKDIR /go/src/github.com/maklesoft/padlock-cloud
 
 COPY . .
 
-RUN apk update && apk --no-cache add git
-    
-RUN go get -u github.com/kardianos/govendor && \
-    govendor sync
-
-RUN CGO_ENABLED=0 GOOS=linux go build -v -installsuffix cgo -o padlock-cloud main.go
+RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -mod vendor -trimpath -v -installsuffix cgo -o padlock-cloud main.go
 
 FROM alpine:latest
 

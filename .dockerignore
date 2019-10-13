@@ -4,10 +4,6 @@ Procfile
 .gitignore
 README.md
 
-# Libraries
-vendor/
-!vendor/vendor.json
-
 # Git
 .git/
 

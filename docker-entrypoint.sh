@@ -7,7 +7,7 @@ fi
 
 if [ "$1" = 'padlock-cloud' ]; then
     chown -R 1000:1000 .
-    su-exec padlock-cloud "$@"
+    exec su-exec padlock-cloud "$@"
     exit 0
 fi
 

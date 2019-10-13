@@ -9,7 +9,7 @@ RUN apk update && apk --no-cache add git
 RUN go get -u github.com/kardianos/govendor && \
     govendor sync
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -v -installsuffix cgo -o padlock-cloud main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -v -installsuffix cgo -o padlock-cloud main.go
 
 FROM alpine:latest
 
